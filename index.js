@@ -20,5 +20,21 @@ function playRound(rounds){
     let wins = 0;
 
     let playerInput = prompt("Rock, Paper, or Scissors?");
+    //replace the player input with the lowercase version if it's rock, paper, or scissors.
+    playerInput = playerInput.replace(/Rock|Paper|Scissors/i, playerInput.toLowerCase())
+
+     playerInput = playerInput.replace(',', '')
     console.log(playerInput)
+
+    //if the input isn't rock, paper, or scissors, then return an error.
+    if(playerInput != 'rock' && playerInput != 'paper' && playerInput != 'scissors'){
+        console.log('Invalid Input');
+    }
+
+    //generate a random input for the computer to choose
+    const rps = ['rock', 'paper', 'scissors']
+    let randomIndex = Math.floor(Math.random() * 4);
+    let compInput = rps[randomIndex];
+
+    console.log(compInput)
 }
