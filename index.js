@@ -1,10 +1,16 @@
 const newGameBtn = document.querySelector('#new-game-btn');
+const clearBtn = document.querySelector('#clear-btn');
 const gameText = document.querySelector('#game-text');
 
 //Check if the button was clicked, and if so, prompt the user to input a number and pass it to the game function.
 newGameBtn.addEventListener('click', () =>{
     let roundCount = parseInt(prompt('How many games do you want to play?'))
     game(roundCount);
+})
+
+//Check if the clear button was clicked, and if so, clear the content of gameText.
+clearBtn.addEventListener('click', () =>{
+    gameText.innerHTML = ''
 })
 
 //Make the game function, and call the newRound function for as many times as were passed.
