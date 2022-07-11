@@ -1,0 +1,13 @@
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+:root{
+    --primary-color: #001B34;
+    --secondary-color: #9E31A1;
+    --textbox-color: #CDCDCD;
+}
