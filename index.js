@@ -59,9 +59,9 @@ function newRound(roundCount){
         switch(computerInput){
             case 'rock': gameText.innerHTML = 'You Lose!';
             break;
-            case 'paper': gameText.innerHTML = '<br><br>You Win!';
+            case 'paper': gameText.innerHTML = 'You Win!';
             break;
-            case 'scissors': gameText.innerHTML = '<br><br>Tie!';
+            case 'scissors': gameText.innerHTML = 'Tie!';
             break;
         }
     } else{
