@@ -2,15 +2,86 @@ body{
     margin: 0;
     padding: 0;
     width: 100%;
+    height: 100vh;
 
     background-color: var(--primary-color);
 
     color: white;
     font-family: 'Roboto', sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 :root{
-    --primary-color: #001B34;
+    --primary-color: #292929;
     --secondary-color: #9E31A1;
     --textbox-color: #CDCDCD;
+}
+
+/*Main Content*/
+.game{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title{
+    text-align: center;
+}
+
+.play-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 3px solid white;
+
+    width: 40%;
+    height: 60%;
+}
+
+.text-area{
+    width: 60%;
+    height: 40%;
+    padding: 3rem;
+    margin-bottom: 2rem;
+
+    border: 3px solid var(--secondary-color);
+    background-color: var(--textbox-color);
+
+    color: var(--primary-color);
+    text-align: center;
+    font-weight: lighter;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    width: 100%;
+    height: auto;
+}
+
+.button{
+    width: 15%;
+    height: 3rem;
+    background-color: var(--secondary-color);
+
+    color: white;
+    font-weight: bold;
+
+    border: 3px solid white;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.button:hover{
+    background-color: #C95BCC;
 }

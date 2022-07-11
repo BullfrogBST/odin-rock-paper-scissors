@@ -39,29 +39,29 @@ function newRound(roundCount){
     //For each possible userInput, check what the computer's input and reurn "You Win!", "You Lose!", or "Tie!" accordingly.
     if(userInput == 'rock'){
         switch(computerInput){
-            case 'rock': gameText.innerHTML += '<br><br>Tie!';
+            case 'rock': gameText.innerHTML = 'Tie!';
             break;
-            case 'paper': gameText.innerHTML += '<br><br>You Lose!';
+            case 'paper': gameText.innerHTML = 'You Lose!';
             break;
-            case 'scissors': gameText.innerHTML += '<br><br>You Win!';
+            case 'scissors': gameText.innerHTML = 'You Win!';
             break;
         }
     } else if(userInput == 'paper'){
         switch(computerInput){
-            case 'rock': gameText.innerHTML += '<br><br>You Win!';
+            case 'rock': gameText.innerHTML = 'You Win!';
             break;
-            case 'paper': gameText.innerHTML += '<br><br>Tie!';
+            case 'paper': gameText.innerHTML = 'Tie!';
             break;
-            case 'scissors': gameText.innerHTML += '<br><br>You Lose!';
+            case 'scissors': gameText.innerHTML = 'You Lose!';
             break;
         }
     } else if(userInput == 'scissors'){
         switch(computerInput){
-            case 'rock': gameText.innerHTML += '<br><br>You Lose!';
+            case 'rock': gameText.innerHTML = 'You Lose!';
             break;
-            case 'paper': gameText.innerHTML += '<br><br>You Win!';
+            case 'paper': gameText.innerHTML = '<br><br>You Win!';
             break;
-            case 'scissors': gameText.innerHTML += '<br><br>Tie!';
+            case 'scissors': gameText.innerHTML = '<br><br>Tie!';
             break;
         }
     } else{
