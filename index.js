@@ -58,6 +58,6 @@ function newRound(roundCount){
         }
     } else{
         console.log('Invalid Input!')
-        newRound()
+        newRound(roundCount)
     }
 }
