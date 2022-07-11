@@ -1,4 +1,5 @@
 const newGameBtn = document.querySelector('#new-game-btn');
+const gameText = document.querySelector('#game-text');
 
 //Check if the button was clicked, and if so, prompt the user to input a number and pass it to the game function.
 newGameBtn.addEventListener('click', () =>{
@@ -8,6 +9,7 @@ newGameBtn.addEventListener('click', () =>{
 
 //Make the game function, and call the newRound function for as many times as were passed.
 function game(roundCount){
+    gameText.innerHTML = "New Game!";
     for(let i=0; i<roundCount; i++){
         newRound(roundCount - i);
     }
@@ -24,40 +26,40 @@ function newRound(roundCount){
 
     //Declare a random index from rock, paper, and scissors as the computer's input.
     let rps = ['rock', 'paper', 'scissors'];
-    let randomIndex = Math.floor(Math.random() * 4);
+    let randomIndex = Math.floor(Math.random() * 3);
 
     let computerInput = rps[randomIndex];
 
     //For each possible userInput, check what the computer's input and reurn "You Win!", "You Lose!", or "Tie!" accordingly.
     if(userInput == 'rock'){
         switch(computerInput){
-            case 'rock': console.log('Tie!');
+            case 'rock': gameText.innerHTML += '<br><br>Tie!';
             break;
-            case 'paper': console.log('You Lose!');
+            case 'paper': gameText.innerHTML += '<br><br>You Lose!';
             break;
-            case 'scissors': console.log('You Win!');
+            case 'scissors': gameText.innerHTML += '<br><br>You Win!';
             break;
         }
     } else if(userInput == 'paper'){
         switch(computerInput){
-            case 'rock': console.log('You Win!');
+            case 'rock': gameText.innerHTML += '<br><br>You Win!';
             break;
-            case 'paper': console.log('Tie!');
+            case 'paper': gameText.innerHTML += '<br><br>Tie!';
             break;
-            case 'scissors': console.log('You Lose!');
+            case 'scissors': gameText.innerHTML += '<br><br>You Lose!';
             break;
         }
     } else if(userInput == 'scissors'){
         switch(computerInput){
-            case 'rock': console.log('You Lose!');
+            case 'rock': gameText.innerHTML += '<br><br>You Lose!';
             break;
-            case 'paper': console.log('You Win!');
+            case 'paper': gameText.innerHTML += '<br><br>You Win!';
             break;
-            case 'scissors': console.log('Tie!');
+            case 'scissors': gameText.innerHTML += '<br><br>Tie!';
             break;
         }
     } else{
-        console.log('Invalid Input!')
+        gameText.innerHTML += '<br><br>Invalid Input!';
         newRound(roundCount)
     }
 }
