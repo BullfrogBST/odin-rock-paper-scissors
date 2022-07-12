@@ -74,7 +74,7 @@ body{
     height: auto;
 }
 
-.button{
+.button, .new-game-btn{
     width: 15%;
     height: 3rem;
     background-color: var(--secondary-color);
@@ -94,10 +94,6 @@ body{
     gap: 3rem;
     width: 100%;
     height: auto;
-}
-
-.rps-button{
-    
 }
 
 .button:hover{
