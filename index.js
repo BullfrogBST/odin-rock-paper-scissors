@@ -2,9 +2,9 @@ const buttons = document.querySelectorAll('.rps-button');
 const newGameBtn = document.querySelector('#new-game-btn')
 const gameText = document.querySelector('#game-text');
 
-//Check if the button was clicked, and if so, prompt the user to input a number and pass it to the game function.
+let roundCount = 5
+//Check if the button was clicked, and if so, start the game.
 newGameBtn.addEventListener('click', () =>{
-    let roundCount = parseInt(prompt('How many games do you want to play?'))
     game(roundCount);
 })
 
