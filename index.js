@@ -16,16 +16,18 @@ clearBtn.addEventListener('click', () =>{
 //Make the game function, and call the newRound function for as many times as were passed.
 function game(roundCount){
     gameText.innerHTML = "New Game!";
-    for(let i=0; i<roundCount; i++){
-        newRound(roundCount - i);
-    }
+    setTimeout(() =>{
+        for(let i=0; i<roundCount; i++){
+            newRound(roundCount - i);
+        }
+    }, 500)
     isPlayed = false;
 }
 
 //Make the newRound function
 function newRound(roundCount){
-    //Declare the user's input as a variable.
-    let userInput = prompt(`Rock, paper, or scissors? Rounds left: ${roundCount}`);
+    //Declare the user's input based on what button they clicked.
+    gameText.innerHTML += "<br><br>Rock, paper, or scissors?";
     userInput = userInput.toLowerCase();
 
     console.log(userInput)
