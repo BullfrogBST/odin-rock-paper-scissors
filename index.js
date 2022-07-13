@@ -6,6 +6,7 @@ const gameStats = {
     firstTo: 5,
     wins: 0,
     losses: 0,
+    winner: '',
     
     userInput: '',
 
@@ -38,24 +39,25 @@ function newInput(userInput){
 //Declare the newGame() function
 function newGame(){
 //Reset all game stats, display "New Game!" for a certain interval of time, and call the newRound function for as many times as the gameStats.firstTo says.
-    gameStats.reset()
+    gameStats.reset();
     gameText.textContent = "New Game!";
-    gameStats.gameRunning = true
+    gameStats.gameRunning = true;
 
-    gameStats.wins = 5;
-
-    setInterval(() =>{
-        while(gameStats.gameRunning){
-            if(gameStats.wins < 5 && gameStats.losses < 5 && gameStats.roundEmpty){
-                //newRound();
+    setTimeout(() =>{
+        console.log(gameStats.wins)
+        console.log(gameStats.losses)
+        while(gameStats.wins < 5 && gameStats.losses < 5 && gameStats.gameRunning && gameStats.roundEmpty){
+                newRound();
                 gameStats.roundEmpty = false;
                 console.log('New Round!')
-            }
         }
     }, 1250);
 }
-//Declare the newRound() function
 
+//Declare the newRound() function
+function newRound(){
+    console.log('debug')
+}
 //Display the initial game stats until either rock, paper, or scissors was chosen
 
 //Once rock, paper or scissors was chosen, display the user's input on the gameText
@@ -65,5 +67,7 @@ function newGame(){
 //Check who the winner is, and display it on the game text after a certain interval of time
 
 //Increment the wins or losses value accordingly if it wasn't a tie after a certain amount of time, so the function doesn't get called again for a few seconds
+
+//Check who the winner so far is, and update gameStats.winner to the value
 
 //Unfreeze the userInput value
