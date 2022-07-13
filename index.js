@@ -1,7 +1,17 @@
 //Get the buttons nodeList and store it in a variable. Also store the gameText into a variable
-
+const buttons = document.querySelectorAll('.button');
+const gameText = document.querySelector('#game-text')
+console.log(buttons);
+console.log(gameText);
 //Make a gameStats object with various stats for the game
-
+const gameStats = {
+    firstTo: 5,
+    wins: 0,
+    losses: 0,
+    
+    userInput: ''
+}
+console.log(gameStats)
 //Add an event listener for the buttons, and check which button was pressed. Call the newInput() function.
 
 //Declare the newInput() function
@@ -12,7 +22,7 @@
 
 //Declare the newGame() function
 
-//Reset all game stats, display "New Game!" for a certain interval of time, and call the newRound function for as many times as the gameStats.roundCount says
+//Reset all game stats, display "New Game!" for a certain interval of time, and call the newRound function for as many times as the gameStats.firstTo says
 
 //Declare the newRound() function
 
