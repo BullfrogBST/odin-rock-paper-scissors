@@ -9,6 +9,9 @@ const gameStats = {
     
     userInput: '',
 
+    gameRunning: false,
+    roundEmpty: true,
+
     reset: function(){
         this.wins = 0;
         this.losses = 0;
@@ -34,13 +37,20 @@ function newInput(userInput){
 }
 //Declare the newGame() function
 function newGame(){
-//Reset all game stats, display "New Game!" for a certain interval of time, and call the newRound function for as many times as the gameStats.firstTo says
+//Reset all game stats, display "New Game!" for a certain interval of time, and call the newRound function for as many times as the gameStats.firstTo says.
     gameStats.reset()
     gameText.textContent = "New Game!";
+    gameStats.gameRunning = true
+
+    gameStats.wins = 5;
 
     setInterval(() =>{
-        if(gameStats.wins < 5 && gameStats.losses < 5){
-            newRound();
+        while(gameStats.gameRunning){
+            if(gameStats.wins < 5 && gameStats.losses < 5 && gameStats.roundEmpty){
+                //newRound();
+                gameStats.roundEmpty = false;
+                console.log('New Round!')
+            }
         }
     }, 1250);
 }
