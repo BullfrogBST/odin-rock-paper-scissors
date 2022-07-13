@@ -7,7 +7,13 @@ const gameStats = {
     wins: 0,
     losses: 0,
     
-    userInput: ''
+    userInput: '',
+
+    reset: function(){
+        this.wins = 0;
+        this.losses = 0;
+        this.userInput = '';
+    }
 }
 //Add an event listener for the buttons, and check which button was pressed. Call the newInput() function.
 buttons.forEach(button =>{
@@ -19,20 +25,25 @@ buttons.forEach(button =>{
 function newInput(userInput){
 //If the button that was pressed was the new game button, call the newGame() function
     if(userInput == 'new-game-btn'){
-        //newGame();
+        newGame();
     } else{
         //If the button that was pressed was rock, paper, or scissors, then set gameStats.userInput to the userInput, and then freeze the userInput
         gameStats.userInput = userInput;
         Object.defineProperty(gameStats, "userInput", { configurable: false, writable: false });
-        gameStats.userInput = 'Not an input'
-        console.log(gameStats.userInput)
     }
 }
-
 //Declare the newGame() function
-
+function newGame(){
 //Reset all game stats, display "New Game!" for a certain interval of time, and call the newRound function for as many times as the gameStats.firstTo says
+    gameStats.reset()
+    gameText.textContent = "New Game!";
 
+    setInterval(() =>{
+        if(gameStats.wins < 5 && gameStats.losses < 5){
+            newRound();
+        }
+    }, 1250);
+}
 //Declare the newRound() function
 
 //Display the initial game stats until either rock, paper, or scissors was chosen
