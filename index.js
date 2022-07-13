@@ -1,8 +1,6 @@
 //Get the buttons nodeList and store it in a variable. Also store the gameText into a variable
 const buttons = document.querySelectorAll('.button');
 const gameText = document.querySelector('#game-text')
-console.log(buttons);
-console.log(gameText);
 //Make a gameStats object with various stats for the game
 const gameStats = {
     firstTo: 5,
@@ -11,14 +9,25 @@ const gameStats = {
     
     userInput: ''
 }
-console.log(gameStats)
 //Add an event listener for the buttons, and check which button was pressed. Call the newInput() function.
-
+buttons.forEach(button =>{
+    button.addEventListener('click', (e) =>{
+        newInput(e.target.getAttribute('id'));
+    })
+})
 //Declare the newInput() function
-
+function newInput(userInput){
 //If the button that was pressed was the new game button, call the newGame() function
-
-//If the button that was pressed was rock, paper, or scissors, then set gameStats.userInput to the userInput, and then freeze the userInput
+    if(userInput == 'new-game-btn'){
+        //newGame();
+    } else{
+        //If the button that was pressed was rock, paper, or scissors, then set gameStats.userInput to the userInput, and then freeze the userInput
+        gameStats.userInput = userInput;
+        Object.defineProperty(gameStats, "userInput", { configurable: false, writable: false });
+        gameStats.userInput = 'Not an input'
+        console.log(gameStats.userInput)
+    }
+}
 
 //Declare the newGame() function
 
