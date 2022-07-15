@@ -93,6 +93,7 @@ body{
     justify-content: center;
     gap: 3rem;
     width: 100%;
+    min-width: fit-content;
     height: auto;
 }
 

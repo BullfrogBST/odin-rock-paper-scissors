@@ -45,10 +45,11 @@ function newInput(userInput){
 //If the button that was pressed was the new game button, call the newGame() function
     if(userInput == 'new-game-btn'){
         newGame();
-    } else{
+    } else if(gameStats.roundEmpty){
         //If the button that was pressed was rock, paper, or scissors, then set gameStats.userInput to the userInput, and then freeze the userInput. Call the newRound function
         gameStats.userInput = userInput;
         Object.defineProperty(gameStats, "userInput", { configurable: true, writable: false });
+        gameStats.roundEmpty = false;
         newRound();
     }
 }
@@ -65,7 +66,6 @@ function newGame(){
         if(gameStats.wins < 5 && gameStats.losses < 5 && gameStats.gameRunning && gameStats.roundEmpty){
             newRound();
         }
-        //Call the endGame() function
     }, 1250);
 }
 
@@ -74,9 +74,9 @@ function newGame(){
 function newRound(){
     //Check who the gameWinner so far is, and update gameStats.gameWinner to the value
     if(gameStats.wins > gameStats.losses){
-        gameStats.gameWinner = "You are winning";
+        gameStats.gameWinner = "The player is winning!";
     } else if(gameStats.wins < gameStats.losses){
-        gameStats.gameWinner = "The computer is winning";
+        gameStats.gameWinner = "The computer is winning!";
     } else{
         gameStats.gameWinner = "Tie";
     }
@@ -103,9 +103,8 @@ function newRound(){
             }
             //Set roundEmpty to true and call checkNewRound() after a certain interval of time
             setTimeout(() =>{
-                gameStats.roundEmpty = true;
                 checkNewRound();
-            }, 2000)
+            }, 1250)
         }, 1250)
     }
 }
@@ -116,6 +115,7 @@ function checkWinner(){
     if(gameStats.userInput == 'Rock'){
         switch(gameStats.computerInput){
             case "Rock": gameText.innerHTML += "<br><br>Tie!";
+            gameStats.roundWinner = 'Tie'
             break;
             case "Paper": gameText.innerHTML += "<br><br>Computer +1!";
             gameStats.roundWinner = 'Computer';
@@ -130,6 +130,7 @@ function checkWinner(){
             gameStats.roundWinner = 'Player';
             break;
             case "Paper": gameText.innerHTML += "<br><br>Tie!";
+            gameStats.roundWinner = 'Tie'
             break;
             case "Scissors": gameText.innerHTML += "<br><br>Computer +1!";
             gameStats.roundWinner = 'Computer';
@@ -144,6 +145,7 @@ function checkWinner(){
             gameStats.roundWinner = 'Player';
             break;
             case "Scissors": gameText.innerHTML += "<br><br>Tie!";
+            gameStats.roundWinner = 'Tie'
             break;
         }
     }
@@ -152,20 +154,29 @@ function checkWinner(){
 //Declare the checkNewRound function
 function checkNewRound(){
     //if the wins and losses are less than five, start a new round. If not, call the endGame() function.
-    if(gameStats.wins < 5 && gameStats.losses < 5){
+    if(gameStats.wins < gameStats.firstTo && gameStats.losses < gameStats.firstTo){
         gameStats.roundReset();
-        console.log(gameStats.userInput);
-        console.log(gameStats.computerInput)
-        gameStats.roundEmpty = false;
+        gameStats.roundEmpty = true;
         newRound();
-        console.log(gameStats.wins)
     } else{
         endGame();
     }
 }
 
 //Declare the endGame() function
+function endGame(){
+    //If the user wins, declare so on the screen, and vice versa
+    if(gameStats.wins == gameStats.firstTo){
+        gameText.innerHTML = "Player Wins!"
+    } else{
+        gameText.innerHTML = "Computer Wins!"
+    }
 
-//If the user wins, declare so on the screen, and vice versa
+    //Set gameRunning to false
+    gameStats.gameRunning = false;
 
-//After a certain amount of time, add the text "New Game?" to the gameText
+    //After a certain amount of time, add the text "New Game?" to the gameText
+    setTimeout(()=>{
+        gameText.innerHTML += "<br><br>New Game?"
+    }, 1250)
+}
