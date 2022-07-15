@@ -14,10 +14,18 @@ const gameStats = {
     gameRunning: false,
     roundEmpty: true,
 
-    reset: function(){
+    gameReset: function(){
         this.wins = 0;
         this.losses = 0;
 
+        this.userInput = 'new-game-btn';
+        Object.defineProperty(this, "userInput", { configurable: true, writable: true });
+
+        this.computerInput = '';
+        Object.defineProperty(this, "computerInput", { configurable: true, writable: true });
+    },
+
+    roundReset: function(){
         this.userInput = 'new-game-btn';
         Object.defineProperty(this, "userInput", { configurable: true, writable: true });
 
@@ -48,13 +56,14 @@ function newInput(userInput){
 //Declare the newGame() function
 function newGame(){
 //Reset all game stats, display "New Game!" for a certain interval of time, and call the newRound function for as many times as the gameStats.firstTo says.
-    gameStats.reset();
+    gameStats.gameReset();
     gameText.textContent = "New Game!";
     gameStats.gameRunning = true;
     gameStats.roundEmpty = true;
 
     setTimeout(() =>{
         while(gameStats.wins < 5 && gameStats.losses < 5 && gameStats.gameRunning && gameStats.roundEmpty){
+                gameStats.roundReset();
                 newRound();
                 gameStats.roundEmpty = false;
                 console.log('New Round!');
@@ -66,7 +75,7 @@ function newGame(){
 function newRound(){
     //Check who the gameWinner so far is, and update gameStats.gameWinner to the value
     if(gameStats.wins > gameStats.losses){
-        gameStats.gameWinner = "You're winning";
+        gameStats.gameWinner = "You are winning";
     } else if(gameStats.wins < gameStats.losses){
         gameStats.gameWinner = "The computer is winning";
     } else{
@@ -92,5 +101,12 @@ function newRound(){
         
         //Unfreeze the userInput value
         
+        //If the gameStats.wins or gameStats.losses is greater than firstTo, call the endGame() function  
     }
 }
+
+//Declare the endGame() function
+
+//If the user wins, declare so on the screen, and vice versa
+
+//After a certain amount of time, add the text "New Game?" to the gameText
